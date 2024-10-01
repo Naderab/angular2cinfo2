@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+
+{{category.id}}<br>
+{{category.name}} <br>
+
+<input 
+(input)="onChangeInput($event)">
+
+Search : <input 
+name="search" 
+[(ngModel)]="searchText">
+Value : {{searchText}}
+<button (click)="searchCategorie()">Search</button>
+<table class="table">
+    <tr>
+        <th>Image</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Available</th>
+    </tr>
+    <tr *ngFor="let element of listcategoryfiltred">
+            <td><img [src]="element.image" width="100" height="100"></td>
+            <td>{{element.id}}</td>
+            <td>{{element.name}}</td>
+            <td *ngIf="element.available == false">Catégorie non disponible</td>
+            <td *ngIf="element.available == true"><button (click)="afficher(element.name)">Afficher Produits</button></td>
+    </tr>
+</table>
