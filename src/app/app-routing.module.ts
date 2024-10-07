@@ -4,12 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NotFountComponent } from './not-fount/not-fount.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'listCategorie', component: ListCategoriesComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: '', redirectTo: '/home' , pathMatch:'full' },
+  { path: 'products/:id', component: ProductsComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: "**", component: NotFountComponent }
 ];
 
 @NgModule({

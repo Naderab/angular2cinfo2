@@ -3,14 +3,15 @@
 {{category.id}}<br>
 {{category.name}} <br>
 
-<input 
+<input class="form-control"
 (input)="onChangeInput($event)">
 
 Search : <input 
+class="form-control"
 name="search" 
 [(ngModel)]="searchText">
 Value : {{searchText}}
-<button (click)="searchCategorie()">Search</button>
+<button class="btn btn-success" (click)="searchCategorie()">Search</button>
 <table class="table">
     <tr>
         <th>Image</th>
@@ -23,6 +24,6 @@ Value : {{searchText}}
             <td>{{element.id}}</td>
             <td>{{element.name}}</td>
             <td *ngIf="element.available == false">Catégorie non disponible</td>
-            <td *ngIf="element.available == true"><button (click)="afficher(element.name)">Afficher Produits</button></td>
+            <td *ngIf="element.available == true"><button class="btn btn-primary" [routerLink]="['/products/',element.id]">Afficher Produits</button></td>
     </tr>
 </table>

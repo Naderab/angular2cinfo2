@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
+import { NotFountComponent } from './not-fount/not-fount.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FooterComponent,
     ListCategoriesComponent,
-    ProductsComponent
+    ProductsComponent,
+    NotFountComponent
   ],
   imports: [
     BrowserModule,
