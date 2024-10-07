@@ -5,13 +5,15 @@ import { ListCategoriesComponent } from './list-categories/list-categories.compo
 import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFountComponent } from './not-fount/not-fount.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/home' , pathMatch:'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'products/:id', component: ProductsComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: "**", component: NotFountComponent }
+  { path: 'category/add', component: AddCategoryComponent },
+  { path: '**', component: NotFountComponent },
 ];
 
 @NgModule({

@@ -1,1 +1,12 @@
-
+<div class="container">
+    <div class="row">
+        <div *ngFor="let p of listProducts" class="card col-4" style="margin:10px;width:18rem">
+            <img [src]="p.image" class="card-img-top" style="height:200px" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{p.name}}</h5>
+                <p class="card-text">Price : {{p.price}}</p>
+                <!--<a href="#" class="btn btn-primary">Go somewhere</a> !-->
+            </div>
+        </div>
+    </div>
+</div>
