@@ -1,15 +1,56 @@
+<!--<input [formControl]="name">
 
-<input [formControl]="name">
+Value name : {{name.value}}
 
-Value : {{name.value}}
+{{name | json}}-->
 
-{{name | json}}
+<div class="container">
+    <div class="row">
+        <form [formGroup]="category">
+            <div class="mb-3">
+                <label>Name : </label>
+                <input class="form-control" formControlName="name">
+            <div *ngIf="category.get('name')!.invalid && (category.get('name')!.touched || category.get('name')!.dirty)">
+                <div *ngIf="category.get('name')!.errors!['required']">
+                Name is required ! 
+            </div>
+            <div *ngIf="category.get('name')!.errors!['minlength']">
+                Name must have at least 3 characters!
+            </div>
+            </div>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    Available
+                </label>
+                <input class="form-check-input" type="checkbox" formControlName="available">
+                
+            </div>
+            <div class="mb-3">
+                <label>Image : </label>
 
-<form [formGroup]="category">
-    <input formControlName="name">
-    <input formControlName="available">
-    <input formControlName="image">
-    <input type="submit" value="Add category">
-</form>
+                <input class="form-control" formControlName="image">
+            </div>
+            <div class="form-group">
+                <div formGroupName="adresse">
+                    <label>Adresse : </label>
+                    <div class="mb-3">
+                        <label>Street : </label>
+                        <input class="form-control" formControlName="Street">
+                    </div>
+                    <div class="mb-3">
+                        <label>City : </label>
+                        <input class="form-control" formControlName="city">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+            <input class="btn btn-success" type="submit" value="Add category" (click)="submit()">
 
-{{category.get('name')!.value }}
+            </div>
+        </form>
+    </div>
+</div>
+
+
+Value Category : {{category.value | json }}
