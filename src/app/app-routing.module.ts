@@ -6,10 +6,12 @@ import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotFountComponent } from './not-fount/not-fount.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'product/add', component: AddProductComponent },
   { path: 'products/:id', component: ProductsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'category/add', component: AddCategoryComponent },

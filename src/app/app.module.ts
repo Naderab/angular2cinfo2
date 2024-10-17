@@ -13,6 +13,7 @@ import { ProductsComponent } from './products/products.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotFountComponent } from './not-fount/not-fount.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     ListCategoriesComponent,
     ProductsComponent,
     NotFountComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
