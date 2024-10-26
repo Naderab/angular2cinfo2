@@ -1,0 +1,11 @@
+{
+  "product": [],
+  "category": [
+    {
+      "name": "Categorie update",
+      "available": true,
+      "image": "assets/images/categorie_electromenager.jpg",
+      "id": "f02f"
+    }
+  ]
+}

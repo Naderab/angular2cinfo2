@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/category';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-add-category',
@@ -11,7 +12,22 @@ import { Router } from '@angular/router';
 })
 export class AddCategoryComponent {
 
-  constructor(private cs: CategoryService,private r:Router) { }
+  id !: number;
+  constructor(private r: Router,
+    private api: ApiService,
+    private ar:ActivatedRoute
+  ) { 
+    this.id = this.ar.snapshot.params['id'];
+    if (this.id != undefined) {
+      this.api.getBy<Category>('category', this.id).subscribe({
+        next: data => this.category.patchValue({
+          name: data.name,
+          available: data.available,
+          image:data.image
+        })
+      })
+    }
+  }
   
   //Create input
   // name : Nom d'input
@@ -29,7 +45,25 @@ export class AddCategoryComponent {
   })
 
   submit() {
-    this.cs.addCategory(this.category.value)
-    this.r.navigate(['/home']);
+   // this.cs.addCategory(this.category.value)
+    // this.r.navigate(['/home']);
+    if (this.id != undefined) {
+      this.api
+        .update<Category>('category', this.id, this.category.value)
+        .subscribe({
+          next: () => this.r.navigate(['/home']),
+          error: (e) => alert(e),
+        });
+    } else {
+      this.api.add<Category>('category', this.category.value).subscribe({
+      next: () => this.r.navigate(['/home']),
+      error: (e) => alert(e),
+    });
+    }
+    
+  }
+
+  getButtonMessage() {
+   return this.id != undefined ? "Update Category" : "Add Category"
   }
 }

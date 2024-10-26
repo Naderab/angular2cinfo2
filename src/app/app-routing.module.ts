@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'category/add', component: AddCategoryComponent },
+  { path: 'category/update/:id', component: AddCategoryComponent },
   { path: '**', component: NotFountComponent },
 ];
 

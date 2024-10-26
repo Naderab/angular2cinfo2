@@ -25,5 +25,7 @@ Value : {{searchText}}
             <td>{{element.name}}</td>
             <td *ngIf="element.available == false">Catégorie non disponible</td>
             <td *ngIf="element.available == true"><button class="btn btn-primary" [routerLink]="['/products/',element.id]">Afficher Produits</button></td>
+            <td><button class="btn btn-danger" 
+            (click)="deleteCategory(element.id)">Delete</button></td>
     </tr>
 </table>

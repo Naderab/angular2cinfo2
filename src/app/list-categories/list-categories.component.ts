@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Category } from '../models/category';
 import { CategoryService } from '../services/category.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-list-categories',
@@ -11,10 +12,24 @@ export class ListCategoriesComponent {
   categories: Category[] = [];
   listcategoryfiltred: Category[] = [];
   //Injection des dépendances
-  constructor(private cs: CategoryService) {
-    this.categories = this.cs.getCategories();
-    this.listcategoryfiltred = this.categories;
-    
+  constructor(private cs: CategoryService,
+    private api: ApiService) {
+   // this.categories = this.cs.getCategories();
+   // this.listcategoryfiltred = this.categories;
+    this.api.get<Category[]>('category').subscribe({
+      next: (data) => {
+        this.categories = data
+        this.listcategoryfiltred = this.categories
+      }
+    })
+  }
+
+  deleteCategory(id: number) {
+    this.api.delete<Category>('category', id).subscribe({
+      next: () =>
+        this.listcategoryfiltred =
+        this.listcategoryfiltred.filter(c => c.id != id)
+    });
   }
 
   //TWO-WAY Databinding
